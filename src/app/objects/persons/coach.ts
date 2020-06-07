@@ -1,5 +1,5 @@
 export class Coach implements Person{
-  name: string;
+  readonly name: string;
 
   work() {
     console.log('I train dream team');

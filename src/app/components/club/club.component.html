@@ -1,1 +1,107 @@
-<p>club works!</p>
+<div class="header">
+  <div>
+    <button mat-stroked-button (click)="goToLeague()" color="primary">Повернутися в лігу</button>
+  </div>
+  <div>
+    <button mat-stroked-button (click)="goToMarket()" color="primary"> Перейти на трансферний ринок</button>
+  </div>
+  <div style="width: 5%"></div>
+  <div class="image">
+    <img [src]="'assets/image/'+ club.image +'.png'"/>
+  </div>
+  <div class="management">
+    <h4>Президент {{club.president}}</h4>
+    <h4>Головний тренер {{club.coach}}</h4>
+  </div>
+</div>
+
+<br>
+<br>
+<h2 class="title">Перелік футболістів клубу:</h2>
+<h5 class="title">(сортування кожної колонки стрілочкою на назві)</h5>
+<div>
+  <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
+    <mat-label>Фільтер {{filter.name}}</mat-label>
+    <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue"
+            (change)="filterChange(filter,$event)">
+      <option value="">-- Select {{filter.name}} --</option>
+      <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
+    </select>
+  </mat-form-field>
+  &nbsp;
+  <button mat-flat-button color="warn" (click)="resetFilters()">Reset</button>
+</div>
+
+<mat-card class="common-mat-card">
+  <mat-card-content class="card-content">
+    <div id="search-customer-table" class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="wide-table">
+        <caption>ПЕРЕЛІК УЧАСНИКІВ</caption>
+        <!-- Position Column -->
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No</th>
+          <td mat-cell *matCellDef="let element; let i = index;">{{i + 1}}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Футболіст</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Амплуа</th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="skills">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Навички</th>
+          <td mat-cell *matCellDef="let element"> {{element.skills}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Вік</th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Вага</th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="height">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Зріст</th>
+          <td mat-cell *matCellDef="let element"> {{element.height}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Громадянство</th>
+          <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="salary">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Зарплата</th>
+          <td mat-cell *matCellDef="let element"> {{element.salary | number}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="marketCost">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ринкова вартість</th>
+          <td mat-cell *matCellDef="let element"> {{element.marketCost  | number}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+      </table>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+

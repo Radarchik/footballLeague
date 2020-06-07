@@ -1,5 +1,3 @@
-import {Player} from './player';
-
 export class Goalkeeper implements Player {
   indNumber: number;
   name: string;
@@ -12,8 +10,9 @@ export class Goalkeeper implements Player {
   club: string;
   salary: number;
   marketCost: number;
+  isPlayerForSale: boolean;
 
   work() {
-    console.log('I defence team`s gate');
+    console.log('I catch ball');
   }
 }

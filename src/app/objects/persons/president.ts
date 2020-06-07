@@ -1,5 +1,5 @@
-export class President implements Person{
-  name: string;
+export class President implements Person {
+  readonly name: string;
 
   work() {
     console.log('I manage football club');

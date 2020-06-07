@@ -1,0 +1,17 @@
+/*.mat-row:hover {
+  background-color: yellow;
+  cursor: pointer;
+}*/
+table {
+  width: 100%;
+}
+
+.choseParameter{
+  align-items: center;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+ }
+

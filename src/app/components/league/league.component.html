@@ -1,1 +1,68 @@
-<p>league works!</p>
+<div class="header">
+  <h1 align="centre">{{league.name}}</h1>
+  <div class="image">
+    <img [src]="'assets/image/ua_league.jpg'"/>
+  </div>
+</div>
+<mat-card class="common-mat-card">
+  <mat-card-content class="card-content">
+    <div id="search-customer-table" class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="wide-table">
+        <caption><h3>ПЕРЕЛІК УЧАСНИКІВ</h3></caption>
+        <!-- Position Column -->
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No</th>
+          <td mat-cell *matCellDef="let element; let i = index;">{{i + 1}}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Клуб</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Вартість футболістів</th>
+          <td mat-cell *matCellDef="let element"> {{calculateAllPlayersCost(element) | number}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="president">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Президент</th>
+          <td mat-cell *matCellDef="let element"> {{element.president}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="coach">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Тренер</th>
+          <td mat-cell *matCellDef="let element"> {{element.coach}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="budget">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Річний бюджет</th>
+          <td mat-cell *matCellDef="let element"> {{element.budget  | number}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="expenses">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Витрати на зарплату</th>
+          <td mat-cell *matCellDef="let element"> {{element.expenses  | number}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="balance">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Трансферне сальдо </th>
+          <td [style.color]="element.balance > 0 ? 'green' : 'red'" mat-cell *matCellDef="let element"> {{element.balance  | number}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+
+      </table>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+
+

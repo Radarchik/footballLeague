@@ -1,1 +1,14 @@
-<p>dialog works!</p>
+<mat-card id="modal-card" class="dialog">
+  <mat-card-content class="dialog-header">
+    <p *ngIf="data" class="main-text" id="main-text">{{data}}</p>
+  </mat-card-content>
+
+  <mat-card-actions id="dialog-actions" class="container">
+
+    <button mat-raised-button color="accent"  [mat-dialog-close]="true"
+            id="dialog-button-save"><span class="button-text">OK</span></button>
+
+  </mat-card-actions>
+
+</mat-card>
+
