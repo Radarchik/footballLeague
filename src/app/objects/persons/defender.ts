@@ -13,6 +13,6 @@ export class Defender implements Player {
   isPlayerForSale: boolean;
 
   work() {
-    console.log('I defence area near my team`s gate');
+    return 'I defence area near my team`s gate';
   }
 }

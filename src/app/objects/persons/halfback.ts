@@ -13,6 +13,6 @@ export class Halfback implements Player {
   isPlayerForSale: boolean;
 
   work() {
-    console.log('I play in the center and help in defense and attack');
+    return 'I play in the center and help in defense and attack';
   }
 }

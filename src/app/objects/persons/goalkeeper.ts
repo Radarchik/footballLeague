@@ -13,6 +13,6 @@ export class Goalkeeper implements Player {
   isPlayerForSale: boolean;
 
   work() {
-    console.log('I catch ball');
+    return 'I catch ball';
   }
 }

@@ -13,6 +13,6 @@ export class Forward implements Player {
   isPlayerForSale: boolean;
 
   work() {
-    console.log('I attack the opponent’s gate and score goals');
+    return 'I attack the opponent’s gate and score goals';
   }
 }

@@ -15,6 +15,8 @@
   </div>
 </div>
 
+
+
 <br>
 <br>
 <h2 class="title">Перелік футболістів клубу:</h2>
@@ -45,13 +47,13 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Футболіст</th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <td mat-cell *matCellDef="let element" > {{element.name}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="role">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Амплуа</th>
-          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+          <td mat-cell *matCellDef="let element" [matTooltip]="element.work()" matTooltipPosition = "above"> {{element.role}} </td>
         </ng-container>
 
         <!-- Symbol Column -->

@@ -13,7 +13,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule, MatTooltipModule
 } from '@angular/material';
 import { LeagueComponent } from './components/league/league.component';
 import { MarketComponent } from './components/market/market.component';
@@ -45,7 +45,8 @@ registerLocaleData(localeRu, 'ru');
     MatButtonModule,
     MatSelectModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'ru-RU' }],
   entryComponents: [AppComponent, DialogComponent],
