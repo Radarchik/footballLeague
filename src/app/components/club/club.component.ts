@@ -1,9 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Club} from '../../objects/club';
 import {MatSort, MatTableDataSource} from '@angular/material';
-import {of} from 'rxjs';
-import { from } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { DxRangeSelectorModule, DxDataGridModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-club',
@@ -19,7 +17,8 @@ export class ClubComponent implements OnInit {
   dataSource;
   filterValues = {};
   filterSelectObj = [];
-
+  players: Player[];
+  selectedPlayers: Player[];
 
   constructor() {
     // Object to create Filter for
@@ -61,12 +60,12 @@ export class ClubComponent implements OnInit {
         options: [],
         modelValue: undefined
       },
-      {
+/*      {
         name: 'ЗАРПЛАТА',
         columnProp: 'salary',
         options: [],
         modelValue: undefined
-      },
+      },*/
       {
         name: 'Ринкова вартість',
         columnProp: 'marketCost',
@@ -77,9 +76,14 @@ export class ClubComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.club.players);
+    this.players = this.club.players;
+    this.applyDataSourse(this.players);
+  }
+
+  applyDataSourse(players: Player[]){
+    this.dataSource = new MatTableDataSource(players);
     this.dataSource.sort = this.sort;
-    this.dataSource.filterPredicate = this.createFilter();
+    this.dataSource.filterPredicate  = this.createFilter();
 
     this.filterSelectObj.filter((o) => {
       o.options = this.getFilterObject(this.club.players, o.columnProp);
@@ -137,5 +141,21 @@ export class ClubComponent implements OnInit {
 
   goToMarket() {
     this.marketEvent.emit(this.club);
+  }
+
+
+  onValueChanged(e) {
+
+    const selectedPlayers = [];
+
+    this.players.forEach((item, index) => {
+      if (item.salary >= e.value[0] && item.salary <= e.value[1]) {
+        selectedPlayers.push(item);
+      }
+    });
+
+    this.selectedPlayers = selectedPlayers;
+    console.log('this.selectedPlayers', selectedPlayers);
+    this.applyDataSourse(this.selectedPlayers);
   }
 }

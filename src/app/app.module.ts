@@ -21,6 +21,8 @@ import {FormsModule} from '@angular/forms';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import {DxDataGridModule, DxRangeSelectorModule} from 'devextreme-angular';
+
 
 registerLocaleData(localeRu, 'ru');
 
@@ -46,7 +48,9 @@ registerLocaleData(localeRu, 'ru');
     MatSelectModule,
     FormsModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DxRangeSelectorModule,
+    DxDataGridModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'ru-RU' }],
   entryComponents: [AppComponent, DialogComponent],

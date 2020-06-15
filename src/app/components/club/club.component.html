@@ -16,6 +16,23 @@
 </div>
 
 
+<div id="range-selector-demo">
+  <dx-range-selector
+    id="range-selector"
+    title="Фільтрування футболістів по зарплаті"
+    [dataSource]="players"
+    dataSourceField="salary"
+    (onValueChanged)="onValueChanged($event)">
+    <dxo-margin [top]="20"></dxo-margin>
+    <dxo-scale
+      [tickInterval]="1"
+      [minorTickInterval]="1">
+      <dxo-label format="decimal"></dxo-label>
+    </dxo-scale>
+    <dxo-behavior callValueChanged="onMoving"></dxo-behavior>
+  </dx-range-selector>
+</div>
+
 
 <br>
 <br>
